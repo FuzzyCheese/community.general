@@ -97,7 +97,7 @@ def wakeonlan(module, mac, broadcast, port):
 
     # Create payload for magic packet
     data = b''
-    padding = ''.join(['FFFFFFFFFFFF', mac * 20])
+    padding = ''.join(['FFFFFFFFFFFF', mac * 16])
     for i in range(0, len(padding), 2):
         data = b''.join([data, struct.pack('B', int(padding[i: i + 2], 16))])
 

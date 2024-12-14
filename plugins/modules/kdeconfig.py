@@ -144,6 +144,8 @@ def run_kwriteconfig(module, cmd, path, groups, key, value):
         else:
             args.append('false')
     else:
+        if isinstance(value, str) and value[0] == '-' and value[1:].isdigit():
+            args.append('--')
         args.append(value)
     module.run_command(args, check_rc=True)
 
